@@ -51,7 +51,7 @@ Data Processing
 
 ── App.py              # Main application script
 
-Models
+models
 
 ── arima.py            # ARIMA model for forecasting
 ── lstm.py             # LSTM model for trend prediction

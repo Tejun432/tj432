@@ -1,4 +1,4 @@
-# airquality-monitoring-system
+# Air Quality Monitoring System
 This repository contains Python scripts and a Jupyter Notebook that collectively implement an Air Quality Monitoring System. The system integrates data collection, cleaning, processing, and machine learning models to monitor and predict air quality parameters.
 
 ## Project Overview

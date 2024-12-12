@@ -61,8 +61,6 @@ models
 
 
 
-
-
 ### Install the required Python packages:
 
 
@@ -77,5 +75,9 @@ python Data Processing/App.py
 Use the scripts in the dashboard directory for data collection and database setup.
 Utilize the Data Collection and models directories for cleaning, processing, and predictions.
 Open the Jupyter Notebook (Air_Quality_Monitoring_System.ipynb) for a combined view of all functionalities.
+
+### Demo Video
+
+https://app.screencastify.com/v3/watch/n0OEkr3Ogy808qukVIy0
 
 

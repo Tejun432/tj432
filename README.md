@@ -7,6 +7,7 @@ The project is organized into multiple modules, each focusing on specific aspect
 
 ### Data Collection: 
 Scripts to gather data from sensors.
+http://api.openweathermap.org/data/2.5/air_pollution?lat={lat}&lon={lon}&appid={API key}
 ### Data Cleaning and Processing: 
 Scripts to clean and process raw data.
 ### Machine Learning Models: 

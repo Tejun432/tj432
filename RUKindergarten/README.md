@@ -1,8 +1,7 @@
-Here's a similar breakdown for a **Kindergarten Management System**:
 
 ---
 
-# Kindergarten Management System
+# RUKindergarten Management System
 
 This repository implements a **Kindergarten Management System** using a **hash table structure** to manage the distribution of children across various classrooms. Each classroom is represented by a **priority queue** where children are sorted based on specific attributes like age and behavior.
 

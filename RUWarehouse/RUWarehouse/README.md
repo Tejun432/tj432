@@ -1,4 +1,4 @@
-# Warehouse Management System
+# RUWarehouse Management System
 
 This repository implements a **Warehouse Management System** based on a **hash table structure** where each entry in the table stores a **priority queue**. The system simulates a product warehouse where various operations can be performed to manage products, such as adding, deleting, restocking, and simulating purchases.
 
@@ -18,7 +18,7 @@ This repository implements a **Warehouse Management System** based on a **hash t
    - **Eviction**: If a sector exceeds its capacity (5 products), the least popular product is evicted to make room for new ones.
    - **Better Add Product**: Attempts to add products more efficiently by filling up empty spaces in other sectors first, before adding new products in a full sector.
 
-### File Structure:
+### Files:
 - **Warehouse.java**: The main class that manages product operations, the warehouse structure, and heap maintenance.
 - **Sector.java**: A helper class that manages a priority queue of products within each sector.
 - **Product.java**: Represents individual products with attributes like ID, name, stock, demand, and popularity.
@@ -32,7 +32,3 @@ This repository implements a **Warehouse Management System** based on a **hash t
 - This system is designed to simulate real-world operations of adding, deleting, and purchasing products while ensuring that the warehouse remains within its space limits.
 
 ---
-
-### Note:
-This system assumes the use of a **Priority Queue (min-heap)** for efficient product management, and basic operations to maintain product data like **popularity** and **stock levels**.
-

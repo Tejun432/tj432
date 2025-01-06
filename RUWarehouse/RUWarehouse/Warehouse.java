@@ -7,7 +7,7 @@ package warehouse;
  * Due to your limited space, you are unable to simply rehash to get more space. 
  * However, you can use your priority queue structure to delete less popular items 
  * and keep the space constant.
- * 
+ * //TEJU EDITED//
  * @author Ishaan Ivaturi
  */ 
 public class Warehouse {
@@ -47,7 +47,16 @@ public class Warehouse {
      */
     private void addToEnd(int id, String name, int stock, int day, int demand) {
         // IMPLEMENT THIS METHOD
+        Product product = new Product(id, name, stock, day, demand);
+		Sector sector = findSectorByProductId(id);
+		sector.add(product);
+
     }
+    private Sector findSectorByProductId(int id) {
+		int sectorIndex = (id % 10);
+		return sectors[sectorIndex];
+
+	}
 
     /**
      * Fix the heap structure of the sector, assuming the item was already added
@@ -56,6 +65,8 @@ public class Warehouse {
      */
     private void fixHeap(int id) {
         // IMPLEMENT THIS METHOD
+        Sector sector = findSectorByProductId(id);
+		sector.swim(sector.getSize());
     }
 
     /**
@@ -65,6 +76,31 @@ public class Warehouse {
      */
     private void evictIfNeeded(int id) {
        // IMPLEMENT THIS METHOD
+       Sector sector = findSectorByProductId(id);
+		if (sector.getSize() == 5) {
+			// Product min = sector.get(1);
+
+			Product minPopularProduct = sector.get(1);
+			int minPopular = minPopularProduct.getPopularity();
+			int minPopularIndex = 0;
+			for (int i = 2; i <= 5; i++) {
+
+				Product p = sector.get(i);
+				if (p.getPopularity() < minPopular) {
+					minPopular = p.getPopularity();
+					minPopularProduct = p;
+					minPopularIndex = i;
+				}
+
+			}
+
+			sector.swap(minPopularIndex, sector.getSize());
+
+			// sector.set(sector.getSize(), null);
+			sector.deleteLast();
+			sector.sink(minPopularIndex);
+
+		}
     }
 
     /**
@@ -76,6 +112,17 @@ public class Warehouse {
      */
     public void restockProduct(int id, int amount) {
         // IMPLEMENT THIS METHOD
+        Sector sector = findSectorByProductId(id);
+
+		Product p;
+		for (int i = 1; i <= sector.getSize(); i++) {
+			if (sector.get(i).getId() == id) {
+				p = sector.get(i);
+				p.updateStock(amount);
+			}
+
+		}
+
     }
     
     /**
@@ -86,6 +133,24 @@ public class Warehouse {
      */
     public void deleteProduct(int id) {
         // IMPLEMENT THIS METHOD
+        Sector sector = findSectorByProductId(id);
+		for (int i = 1; i <= sector.getSize(); i++) {
+
+			Product p = sector.get(i);
+			if (p.getId() == id) {
+
+				sector.swap(i, sector.getSize());
+
+				// sector.set(sector.getSize(), null);
+				sector.deleteLast();
+				sector.sink(i);
+				// sector.swim(sector.getSize());
+
+				break;
+
+			}
+
+		}
     }
     
     /**
@@ -98,7 +163,23 @@ public class Warehouse {
      */
     public void purchaseProduct(int id, int day, int amount) {
         // IMPLEMENT THIS METHOD
+        Sector sector = findSectorByProductId(id);
+
+		for (int i = 1; i <= sector.getSize(); i++) {
+
+			Product p = sector.get(i);
+			if (p.getId() == id && p.getStock() > amount) {
+				p.setLastPurchaseDay(day);
+				p.updateStock(-amount);
+				// p.setStock(p.getStock() - amount);
+				p.updateDemand(amount);
+
+				sector.sink(i);
+				break;
+			}
+		}
     }
+
     
     /**
      * Construct a better scheme to add a product, where empty spaces are always filled
@@ -110,6 +191,31 @@ public class Warehouse {
      */
     public void betterAddProduct(int id, String name, int stock, int day, int demand) {
         // IMPLEMENT THIS METHOD
+        Sector sector = findSectorByProductId(id);
+		int sectorIndex = id % 10;
+		int sectorId = sectorIndex;
+		if (sector.getSize() < 5) {
+			addProduct(id, name, stock, day, demand);
+		} else {
+
+			do {
+				sectorId++;
+				if (sectorId == 10)
+					sectorId = 0;
+
+				if (sectors[sectorId].getSize() < 5) {
+					sectors[sectorId].add(new Product(id, name, stock, day, demand));
+					// fixHeap(id);
+					break;
+				}
+
+			} while (sectorId != sectorIndex);
+
+			if (sectorId == sectorIndex) {
+				addProduct(id, name, stock, day, demand);
+			}
+
+		}
     }
 
     /*

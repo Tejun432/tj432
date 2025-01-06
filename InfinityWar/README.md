@@ -1,18 +1,43 @@
-## Getting Started
+# Infinity War 
+## Overview
+This codebase contains Java programs related to various tasks in a fictional context based on the Marvel Universe. The main purpose of these programs is to handle graph-based problems, read/write files, and perform calculations such as finding flux, connectivity, expected utility (EU) thresholds, and minimum energy costs.
 
-Welcome to the VS Code Java world. Here is a guideline to help you get started to write Java code in Visual Studio Code.
+## Files:
+1. **ForgeStormBreaker.java**  
+   - **Task**: Calculates the total flux Thor has to endure from a 2D array of flux intensity values (Neutron Star data). It reads the data from an input file, calculates the total flux, and writes it to an output file.
+   - **Input**: A file with a matrix of flux values.
+   - **Output**: A file with the calculated total flux.
 
-## Folder Structure
+2. **PredictThanosSnap.java**  
+   - **Task**: Simulates the effect of Thanos' snap by randomly removing half of the vertices in a graph. Then, it checks if the graph remains connected or not after removing the vertices.
+   - **Input**: A graph's adjacency matrix and a random seed.
+   - **Output**: A boolean (true/false) indicating whether the graph is connected after the removal of vertices.
 
-The workspace contains two folders by default, where:
+3. **UseTimeStone.java**  
+   - **Task**: Based on a directed graph representing possible timelines, this program counts the total number of possible timelines and those with an expected utility (EU) greater than or equal to a given threshold.
+   - **Input**: A graph adjacency matrix and EU values for vertices, along with an EU threshold.
+   - **Output**: The total number of timelines and those with EU greater than or equal to the threshold.
 
-- `src`: the folder to maintain sources
-- `lib`: the folder to maintain dependencies
+4. **LocateTitan.java**  
+   - **Task**: Given a graph of generators and their functionality values, it computes the minimum energy cost from Earth (vertex 0) to Titan (vertex n-1) after modifying the edge weights using functionality values.
+   - **Input**: A graph with energy costs and functionality values.
+   - **Output**: The minimum cost to travel from Earth to Titan.
 
-Meanwhile, the compiled output files will be generated in the `bin` folder by default.
+## Key Concepts:
+- **Adjacency Matrix**: A representation of a graph where matrix elements indicate if there is a direct connection (edge) between two vertices (nodes).
+- **Graph Algorithms**: Includes graph traversal (DFS) and shortest path algorithms (Dijkstra’s Algorithm).
+- **Random Vertex Removal**: Simulating random destruction of parts of a graph and checking connectivity.
 
-> If you want to customize the folder structure, open `.vscode/settings.json` and update the related settings there.
+## Instructions:
+ **Compiling and Running**:
+   - Ensure you are in the **../InfinityWar** directory.
+   - **Compiling**: `javac -d bin src/avengers/*.java`
+   - **Running**: 
+     ```bash
+     java -cp bin avengers/ForgeStormBreaker forgestormbreaker.in forgestormbreaker.out
+     java -cp bin avengers/PredictThanosSnap predictthanossnap.in predictthanossnap.out
+     java -cp bin avengers/UseTimeStone usetimestone.in usetimestone.out
+     java -cp bin avengers/LocateTitan locatetitan.in locatetitan.out
+     ```
 
-## Dependency Management
-
-The `JAVA PROJECTS` view allows you to manage your dependencies. More details can be found [here](https://github.com/microsoft/vscode-java-dependency#manage-dependencies).
+---

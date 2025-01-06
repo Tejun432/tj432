@@ -6,7 +6,7 @@ package kindergarten;
  * - a boolean array for seating availability (eg. can a student sit in a given seat), and
  * - a Student array parallel to seatingAvailability to show students filed into seats 
  * --- (more formally, seatingAvailability[i][j] also refers to the same seat in studentsSitting[i][j])
- * 
+ * teju//
  * @author Ethan Chou
  * @author Kal Pandit
  * @author Maksims Kurjanovics Kravcenko
@@ -53,6 +53,42 @@ public class Classroom {
     public void makeClassroom ( String filename ) {
 
         // WRITE YOUR CODE HERE
+        StdIn.setFile(filename);
+        int noOfStudents = StdIn.readInt();
+        while (StdIn.hasNextLine()) {
+
+            String fName = StdIn.readString();
+            String lName = StdIn.readString();
+            int height = StdIn.readInt();
+            Student student = new Student(fName, lName, height);
+            SNode node = new SNode(student, null);
+            SNode currNode;
+
+
+            if (studentsInLine == null ||
+                    studentsInLine.getStudent().compareNameTo(node.getStudent()) > 0) {
+                node.setNext(studentsInLine);
+                studentsInLine = node;
+            } else {
+
+
+                currNode = studentsInLine;
+
+                while (currNode.getNext() != null
+                        && currNode.getNext().getStudent().compareNameTo(node.getStudent()) <= 0)
+
+                    currNode = currNode.getNext();
+
+                node.setNext(currNode.getNext());
+                currNode.setNext(node);
+            }
+
+        }
+
+
+
+
+
     }
 
     /**
@@ -74,7 +110,21 @@ public class Classroom {
      */
     public void setupSeats(String seatingChart) {
 
-	// WRITE YOUR CODE HERE
+    // WRITE YOUR CODE HERE
+    
+    StdIn.setFile(seatingChart);
+
+    int noOfRows = StdIn.readInt();
+    int noOfCols = StdIn.readInt();
+    seatingAvailability = new boolean[noOfRows][noOfCols];
+    studentsSitting = new Student[noOfRows][noOfCols];
+
+    for (int r = 0; r < noOfRows; r++) {
+        for (int c = 0; c < noOfCols; c++) {
+            seatingAvailability[r][c] = StdIn.readBoolean();
+        }
+    }
+
     }
 
     /**
@@ -91,7 +141,32 @@ public class Classroom {
     public void seatStudents () {
 
 	// WRITE YOUR CODE HERE
-	
+    SNode currNode = studentsInLine;
+    boolean isWinnerSeated = false;
+
+    OUTER_LOOP:
+    for (int r = 0; r < studentsSitting.length; r++) {
+        for (int c = 0; c < studentsSitting[r].length; c++) {
+            if (seatingAvailability[r][c]) {
+                if (!isWinnerSeated && musicalChairs != null) {
+                    studentsSitting[r][c] = musicalChairs.getStudent();
+                    isWinnerSeated = true;
+                    musicalChairs = null;
+                } else {
+                    studentsSitting[r][c] = currNode.getStudent();
+
+                    if (currNode.getNext() != null) {
+                        currNode = currNode.getNext();
+                    } else break OUTER_LOOP;
+
+                }
+
+
+            }
+        }
+    }
+    studentsInLine = null;
+
     }
 
     /**
@@ -104,6 +179,28 @@ public class Classroom {
     public void insertMusicalChairs () {
         
         // WRITE YOUR CODE HERE
+        studentsInLine = null;
+
+        for (int r = 0; r < studentsSitting.length; r++) {
+            for (int c = 0; c < studentsSitting[r].length; c++) {
+
+                if (studentsSitting[r][c] != null) {
+                    SNode node = new SNode(studentsSitting[r][c], null);
+
+                    if (musicalChairs == null) {
+                        node.setNext(node);
+                        musicalChairs = node;
+
+                    } else {
+                        node.setNext(musicalChairs.getNext());
+                        musicalChairs.setNext(node);
+                        musicalChairs = node;
+                    }
+
+                }
+            }
+        }
+
 
      }
 
@@ -124,8 +221,150 @@ public class Classroom {
     public void playMusicalChairs() {
 
         // WRITE YOUR CODE HERE
+        //studentsInLine = null;
+
+        int lengthOfMusicalChair = getCountInMusicalChair();
+
+
+        while (lengthOfMusicalChair > 1) {
+            //System.out.println("lengthOfMusicalChair at the beginning :" + lengthOfMusicalChair);
+            printMusicalChairs();
+            int pos = StdRandom.uniform(lengthOfMusicalChair);
+            // System.out.println("deleting pos :" + pos);
+            SNode eliminatedNode = getNodeToBeDeleted(pos);
+            // System.out.println("eliminated node: " + eliminatedNode.getStudent());
+            musicalChairs = deleteAtPosition(pos, lengthOfMusicalChair);
+            //System.out.println("after deleting musical chair now");
+            printMusicalChairs();
+            //  studentsInLine.setNext(eliminatedNode);
+            // System.out.println("calling addEliminantedNodeToStudentInLine");
+            addDeletedNodeToStudentInLine(eliminatedNode.getStudent());
+            printStudentsInLine();
+            lengthOfMusicalChair--;
+        }
+        seatStudents();
 
     } 
+    private void addDeletedNodeToStudentInLine(Student deletedStudent) {
+        printStudentsInLine();
+
+        SNode currNode;
+
+        if (studentsInLine == null ||
+                studentsInLine.getStudent().getHeight() > deletedStudent.getHeight()) {
+            SNode deletedNode = new SNode(deletedStudent, studentsInLine);
+
+            studentsInLine = deletedNode;
+        } else {
+
+            currNode = studentsInLine;
+            while (currNode.getNext() != null) {
+                //System.out.println("student :" + currNode.getNext().getStudent().print());
+                // System.out.println("student :" + currNode.getNext().getStudent().getHeight());
+                if (currNode.getNext().getStudent().getHeight() < deletedStudent.getHeight())
+                    currNode = currNode.getNext();
+                else {
+                    SNode deletedNode = new SNode(deletedStudent, currNode.getNext());
+                    currNode.setNext(deletedNode);
+                    break;
+                }
+
+            }
+
+        }
+
+    }
+
+    private SNode deleteAtPosition(int index, int len) {
+
+
+        int count = 0;
+        SNode previous = musicalChairs, next = musicalChairs, head = musicalChairs;
+        // check list have any node
+        // if not then return
+        if (head == null) {
+            // System.out.printf("\nDelete Last List is empty\n");
+            return null;
+        }
+        // given index is in list or not
+        if (index >= len || index < 0) {
+            //  System.out.printf("\nIndex is not Found\n");
+            return null;
+        }
+        while (len > 0) {
+            // if index found delete that node
+            if (index == count) {
+
+                if (index == 0) {
+                    return deleteFirstNode();
+                } else if (index == (getCountInMusicalChair() - 1)) {
+                    previous.setNext(musicalChairs.getNext());
+                    head = previous;
+                } else previous.setNext(next.getNext());
+                return head;
+            }
+            previous = previous.getNext();
+            next = previous.getNext();
+            len--;
+            count++;
+        }
+        return head;
+    }
+
+    private SNode deleteFirstNode() {
+        SNode head = musicalChairs.getNext();
+        SNode prev = head, firstNode = head;
+
+        if (head == null) {
+            return null;
+        }
+
+        if (prev.getNext() == prev) {
+            head = null;
+            musicalChairs = null;
+            return null;
+        }
+
+
+        while (prev.getNext() != head) {
+            prev = prev.getNext();
+        }
+
+        prev.setNext(firstNode.getNext());
+        head = prev.getNext();
+        musicalChairs = prev;
+
+        return musicalChairs;
+    }
+
+    private int getCountInMusicalChair() {
+        SNode head = musicalChairs;
+        int count = 0;
+        if (musicalChairs != null) {
+            do {
+                head = head.getNext();
+                count++;
+            } while (head != musicalChairs);
+        }
+
+        return count;
+    }
+
+    private SNode getNodeToBeDeleted(int pos) {
+
+        if (pos == 0)
+            return musicalChairs.getNext();
+
+
+        SNode curr = musicalChairs.getNext();
+
+        for (int i = 1; i <= pos; i++)
+            curr = curr.getNext();
+
+
+        return curr;
+    }
+
 
     /**
      * Insert a student to wherever the students are at (ie. whatever activity is not empty)
@@ -137,6 +376,33 @@ public class Classroom {
     public void addLateStudent ( String firstName, String lastName, int height ) {
         
         // WRITE YOUR CODE HERE
+        Student lateStudent = new Student(firstName, lastName, height);
+        SNode lateStudentNode = new SNode(lateStudent, null);
+        SNode head = studentsInLine.getNext();
+        if (studentsInLine != null) {
+
+            SNode temp = head;
+            while (temp.getNext() != null)
+                temp = temp.getNext();
+
+            temp.setNext(lateStudentNode);
+
+
+        } else if (musicalChairs != null) {
+            lateStudentNode.setNext(musicalChairs.getNext());
+            musicalChairs.setNext(lateStudentNode);
+            musicalChairs = lateStudentNode;
+        }
+
+        OUTER_LOOP:
+        for (int r = 0; r < seatingAvailability.length; r++) {
+            for (int c = 0; c < seatingAvailability[r].length; c++) {
+                if (seatingAvailability[r][c]) {
+                    studentsSitting[r][c] = lateStudent;
+                    break OUTER_LOOP;
+                }
+            }
+        }
         
     }
 
@@ -151,10 +417,98 @@ public class Classroom {
      * @param lastName the student's last name
      */
     public void deleteLeavingStudent ( String firstName, String lastName ) {
+        if (studentsInLine != null)
+        deleteFromStudentInLine(firstName, lastName);
 
-        // WRITE YOUR CODE HERE
+    else if (musicalChairs != null)
+        deleteFromMusicalChairs(firstName, lastName);
+
+    if (studentsSitting != null) {
+
+        OUTER_LOOP:
+        for (int r = 0; r < studentsSitting.length; r++) {
+            for (int c = 0; c < studentsSitting[r].length; c++) {
+
+                if (studentsSitting[r][c] != null && studentsSitting[r][c].getFirstName().equals(firstName) && studentsSitting[r][c].getLastName().equals(lastName)) {
+                    studentsSitting[r][c] = null;
+                    break OUTER_LOOP;
+                }
+            }
+        }
 
     }
+    }
+
+    private void deleteFromMusicalChairs(String fName, String lName) {
+        SNode head = musicalChairs.getNext();
+
+        if (head == null)
+            return;
+
+
+        SNode currNode = head, prev = new SNode();
+        while (!(currNode.getStudent().getFirstName().toLowerCase().equals(fName.toLowerCase())
+                && currNode.getStudent().getLastName().toLowerCase().equals(lName.toLowerCase())
+        )) {
+            if (currNode.getNext() == head) {
+
+                break;
+            }
+
+            prev = currNode;
+            currNode = currNode.getNext();
+        }
+
+
+        if (currNode == head && currNode.getNext() == head) {
+            head = null;
+            musicalChairs = null;
+            // return head;
+        }
+
+        if (currNode == head) {
+            prev = head;
+            while (prev.getNext() != head)
+                prev = prev.getNext();
+            head = currNode.getNext();
+            prev.setNext(head);
+        } else if (currNode.getNext() == head) {
+            prev.setNext(head);
+        } else {
+            prev.setNext(currNode.getNext());
+        }
+
+        musicalChairs = prev;
+
+    }
+
+    private void deleteFromStudentInLine(String fName, String lName) {
+        SNode curr = studentsInLine, prev = null;
+
+        if (curr != null &&
+                (curr.getStudent().getFirstName().toLowerCase().equals(fName.toLowerCase())
+                        && curr.getStudent().getLastName().toLowerCase().equals(lName.toLowerCase())
+                )) {
+            studentsInLine = curr.getNext();
+            return;
+        }
+
+
+        while (curr != null && !(curr.getStudent().getFirstName().toLowerCase().equals(fName.toLowerCase())
+                && curr.getStudent().getLastName().toLowerCase().equals(lName.toLowerCase())
+        )) {
+            prev = curr;
+            curr = curr.getNext();
+        }
+
+        // If key was not present in linked list
+        if (curr == null)
+            return;
+
+        // Unlink the node from linked list
+        prev.setNext(curr.getNext());
+    }
+
 
     /**
      * Used by driver to display students in line

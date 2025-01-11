@@ -36,30 +36,6 @@ LSTM: Neural network-based trend prediction.
 
 The App.py script ties everything together for seamless operation.
 
-### Repository Structure
-
-dashboard 
-
-── collectdata.py      # Collects data from sensors
-── db_config.py        # Database configuration script
-
-Data Collection
-
-── cleandata.py        # Cleans raw air quality data
-── data_processing.py  # Processes and generates reports
-
-Data Processing
-
-── App.py              # Main application script
-
-models
-
-── arima.py            # ARIMA model for forecasting
-── lstm.py             # LSTM model for trend prediction
-
-── Air_Quality_Monitoring_System.ipynb  # Jupyter Notebook documenting the system
-
-
 
 ### Install the required Python packages:
 

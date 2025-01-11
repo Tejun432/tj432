@@ -9,7 +9,7 @@ import java.util.ArrayList;
  * Alive cells with >=4 neighbors die of overpopulation.
  * Alive cells with 2-3 neighbors survive.
  * Dead cells with exactly 3 neighbors become alive by reproduction.
-
+//teju
  * @author Seth Kelley 
  * @author Maxwell Goldberg
  */
@@ -47,6 +47,25 @@ public class GameOfLife {
     public GameOfLife (String file) {
 
         // WRITE YOUR CODE HERE
+        StdIn.setFile(file);
+        int r = StdIn.readInt();
+        int c = StdIn.readInt();
+        
+        grid = new boolean[r][c];
+        totalAliveCells = 0;
+        for (int i = 0; i < r; i++) {
+        	for (int j = 0; j < c; j++) {
+        		boolean b = StdIn.readBoolean();
+        		if (b == true) {
+        			grid[i][j] = ALIVE;
+        			totalAliveCells += 1;
+        		}
+        	}
+        }
+        // DELETE
+        StdOut.println("ROWS: " + r);
+        StdOut.println("COLS: " + c);
+        StdOut.println("Cells: " + totalAliveCells);
     }
 
     /**
@@ -74,7 +93,11 @@ public class GameOfLife {
     public boolean getCellState (int row, int col) {
 
         // WRITE YOUR CODE HERE
-        return true; // update this line, provided so that code compiles
+        boolean cellState = true;
+    	if (grid[row][col] == ALIVE) cellState = true;
+    	if (grid[row][col] == DEAD) cellState = false;
+        return cellState;
+         // update this line, provided so that code compiles
     }
 
     /**
@@ -84,7 +107,10 @@ public class GameOfLife {
     public boolean isAlive () {
 
         // WRITE YOUR CODE HERE
-        return false; // update this line, provided so that code compiles
+        boolean isAlive = true;
+    	if (totalAliveCells != 0) isAlive = true;
+    	if (totalAliveCells == 0) isAlive = false;
+        return isAlive; // update this line, provided so that code compiles
     }
 
     /**
@@ -98,8 +124,32 @@ public class GameOfLife {
      */
     public int numOfAliveNeighbors (int row, int col) {
 
-        // WRITE YOUR CODE HERE
-        return 0; // update this line, provided so that code compiles
+        
+    	int height = grid.length;
+    	int width = grid[0].length;
+    	int numOfAliveNeighbors = 0;
+    	int ni = 0;
+    	int nj = 0;
+    	
+    	for (int i = row-1; i <= row+1; i++) {
+    		for (int j = col-1; j <= col+1; j++) {
+    			ni = i;
+    			nj = j;
+    			if (i == -1) ni = height-1;
+    			if (i == height) ni = 0;
+    			if (j == -1) nj = width-1;
+    			if (j == width) nj = 0;
+    			if (i != row || j != col) {
+    				// DELETE
+    				//StdOut.println(ni+","+nj);
+    				if (grid[ni][nj] == ALIVE) numOfAliveNeighbors += 1;
+    			}
+    		}
+    	}
+    	// DELETE
+    	//StdOut.println("H: " + height);
+    	//StdOut.println("W: " + width);
+        return numOfAliveNeighbors;
     }
 
     /**
@@ -111,7 +161,29 @@ public class GameOfLife {
     public boolean[][] computeNewGrid () {
 
         // WRITE YOUR CODE HERE
-        return new boolean[1][1];// update this line, provided so that code compiles
+        int h = grid.length;
+    	int w = grid[0].length;
+    	
+    	boolean[][] new_grid = new boolean[h][w];
+        for (int i = 0; i < h; i++) {
+        	for (int j = 0; j < w; j++) {
+        		if (grid[i][j] == ALIVE) {
+        			// Rule 1
+        			if (numOfAliveNeighbors(i,j) <= 1) new_grid[i][j] = DEAD;
+        			// Rule 2
+        			else if (numOfAliveNeighbors(i,j) >= 4) new_grid[i][j] = DEAD;
+        			// Rule 3
+        			else new_grid[i][j] = ALIVE;
+        		}
+        		else {
+        			// Rule 4
+        			if (numOfAliveNeighbors(i,j) == 3) new_grid[i][j] = ALIVE;
+        			else new_grid[i][j] = DEAD;
+        		}
+        	}
+        }
+    	
+        return new_grid;// update this line, provided so that code compiles
     }
 
     /**
@@ -123,6 +195,18 @@ public class GameOfLife {
     public void nextGeneration () {
 
         // WRITE YOUR CODE HERE
+        grid = computeNewGrid();
+    	
+    	int h = grid.length;
+    	int w = grid[0].length;
+    	totalAliveCells = 0;
+        for (int i = 0; i < h; i++) {
+        	for (int j = 0; j < w; j++) {
+        		if (grid[i][j] == ALIVE) {
+        			totalAliveCells += 1;
+        		}
+        	}
+        }
     }
 
     /**
@@ -132,6 +216,9 @@ public class GameOfLife {
     public void nextGeneration (int n) {
 
         // WRITE YOUR CODE HERE
+        for (int i = 0; i < n; i++) {
+    		grid = computeNewGrid();    		
+    	}
     }
 
     /**

@@ -29,13 +29,4 @@ This project implements **Conway's Game of Life** using Java. It includes variou
 - **Community Detection** (To be implemented): This feature will calculate the number of distinct communities (groups of connected cells) in the grid.
 
 
-### Example Input File Format:
-
-5 5
-false true false false false
-true false true false false
-false true true true false
-false false false true true
-false false false false false
-
 

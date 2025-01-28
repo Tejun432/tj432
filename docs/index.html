@@ -1,262 +1,169 @@
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>My Programming Portfolio</title>
-  <style>
-    /* Basic Reset */
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio Resume</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background: #f4f4f4;
+            color: #333;
+        }
 
-    body {
-      font-family: 'Times New Roman', Times, serif;
-      background-color: #f4f4f1; 
-      color: #3b4c3a; 
-      line-height: 1.6;
-      transition: background-color 0.5s ease;
-    }
+        header {
+            background: #0078D7;
+            color: white;
+            padding: 1rem 0;
+            text-align: center;
+        }
+        
+        header img.profile-pic {
+            width: 120px; 
+            height: 120px; 
+         
+            margin-bottom: 1rem; 
+        }
 
-    header {
-      background-color: #a8c6a5; 
-      padding: 50px 20px;
-      text-align: center;
-      color: white;
-      border-bottom: 4px solid #7a9d7b; 
-      opacity: 0;
-      animation: fadeInHeader 2s forwards;
-    }
+        header h1 {
+            margin: 0;
+            font-size: 2.5rem;
+        }
 
-    header h1 {
-      font-size: 2.5rem;
-      margin-bottom: 10px;
-      transform: translateY(-30px);
-      animation: slideIn 1s ease-out forwards;
-    }
+        header p {
+            margin: 0;
+            font-size: 1.2rem;
+        }
 
-    header p {
-      font-size: 1.2rem;
-      transform: translateY(-30px);
-      animation: slideIn 1.5s ease-out forwards;
-      animation-delay: 0.5s;
-    }
+        header a {
+            color: white;  
+            text-decoration: none;
+            margin: 0 10px; 
+        }
 
-    /* Table of Contents section */
-    section#toc {
-      background-color: #ffffff; 
-      max-width: 800px;
-      margin: 30px auto;
-      padding: 20px;
-      border-radius: 8px;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-      opacity: 0;
-      animation: fadeIn 1s ease-in-out forwards;
-      animation-delay: 1s;
-    }
+        header a:hover {
+            text-decoration: underline;
+        }
 
-    section#toc h2 {
-      text-align: center;
-      font-size: 1.8rem;
-      color: #7a9d7b;
-      margin-bottom: 20px;
-      opacity: 0;
-      animation: fadeIn 1s ease-out forwards;
-      animation-delay: 1.5s;
-    }
+        .container {
+            max-width: 900px;
+            margin: 2rem auto;
+            padding: 1rem;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
 
-    section#toc ul {
-      list-style-type: none;
-    }
+        .section {
+            margin-bottom: 2rem;
+        }
 
-    section#toc ul li {
-      margin-bottom: 15px;
-    }
+        .section h2 {
+            border-bottom: 2px solid #0078D7;
+            padding-bottom: 0.5rem;
+            margin-bottom: 1rem;
+        }
 
-    section#toc a {
-      text-decoration: none;
-      font-size: 1.2rem;
-      color: #3b4c3a; 
-      transition: color 0.3s ease, transform 0.3s ease;
-    }
+        .skills ul {
+            list-style: disc;
+            padding-left: 20px;
+        }
 
-    section#toc a:hover {
-      color: #6a8e6a;
-      transform: translateX(5px);
-    }
+        .skills ul li {
+            margin: 0.5rem 0; 
+            font-size: 1rem;
+        }
+        
+        .skills {
+            margin-bottom: 3rem; 
+        }
 
-    section h2 {
-      color: #7a9d7b;
-      opacity: 0;
-      animation: fadeIn 1s ease-out forwards;
-    }
+        footer {
+            text-align: center;
+            padding: 1rem 0;
+            background: #0078D7;
+            color: white;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+           
+        }
 
-    section.project {
-      opacity: 0;
-      transform: translateY(20px);
-      animation: fadeInUp 1.5s ease-out forwards;
-      animation-delay: 2s;
-    }
-
-    section.project p,
-    section.project a {
-      opacity: 0;
-      transform: translateY(20px);
-      animation: fadeInUp 1.5s ease-out forwards;
-      animation-delay: 2.5s;
-    }
-
-    section.project a {
-      text-decoration: none;
-      font-size: 1.2rem;
-      color: #3b4c3a;
-      transition: color 0.3s ease, transform 0.3s ease;
-    }
-
-    section.project a:hover {
-      color: #6a8e6a;
-      transform: translateX(5px);
-    }
-
-    /* Keyframe animations */
-    @keyframes fadeIn {
-      from {
-        opacity: 0;
-      }
-      to {
-        opacity: 1;
-      }
-    }
-
-    @keyframes fadeInHeader {
-      from {
-        opacity: 0;
-      }
-      to {
-        opacity: 1;
-      }
-    }
-
-    @keyframes slideIn {
-      from {
-        transform: translateY(-30px);
-        opacity: 0;
-      }
-      to {
-        transform: translateY(0);
-        opacity: 1;
-      }
-    }
-
-    @keyframes fadeInUp {
-      from {
-        opacity: 0;
-        transform: translateY(20px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    
-    @media (max-width: 768px) {
-      header h1 {
-        font-size: 2rem;
-      }
-
-      section#toc {
-        margin: 15px;
-      }
-    }
-  </style>
+    </style>
 </head>
 <body>
-  <header>
-    <h1>Programming Portfolio</h1>
-    <p>Welcome! Here you’ll find an overview of my coding projects, tools, and methods.</p>
-  </header>
+    <header>
+        <img src="https://avatars.githubusercontent.com/u/191302627?v=4" alt="Tejaswi Nalajala" class="profile-pic">
+        
+        <h1>Tejaswi Nalajala</h1>
+         
+        <p>Recent Graduate | Developer-in-Progress | Enthusiastic Learner</p>
+        <p>
+            <a href="https://www.linkedin.com/in/tejaswi-nalajala-19a8222bb/" target="_blank">LinkedIn</a> | 
+            <a href="https://github.com/Tejun432" target="_blank">GitHub</a> | 
+             <a href="mailto:n.teju4@gmail.com">Email</a>
+        </p>
+    </header>
 
-  <section id="toc">
-    <h2>Table of Contents</h2>
+    <div class="container">
+        <section class="section about">
+            <h2>About Me</h2>
+            <p>Hi! I’m a recent graduate with a Bachelor's degree in Computer Science and currently focused on exploring the exciting fields of AI and Machine Learning. I thrive on learning new technologies and using them to develop novel solutions, which broadens my expertise. I enjoy working on initiatives that address real-world issues, and I am enthusiastic to continue my career in technology, contributing to new and effective solutions.</p>
+        </section>
+
+        <section class="section education">
+            <h2>Education</h2>
+            <p><strong>Bachelor of Science in Computer Science</strong></p>
+            <p>Rutgers University | Graduated: Jan 2025</p>
+        </section>
+
+        <section class="section projects">
+            <h2>College Projects</h2>
+            <p><strong>1. Air Quality Monitoring System</strong></p>
+            <p>Description: Involves monitoring and analyzing air quality data using Python and machine learning. Technologies used: Python.</p>
+            <p><a href="https://github.com/Tejun432/tj432/tree/main/AirQuality_Monitoring_System">View on GitHub</a></p>
+
+            <p><strong>2. Infinity War</strong></p>
+            <p>Description: Graph-based algorithms and calculations inspired by the Marvel Universe, solving complex problems in connectivity, flux, and energy. Technologies used: Java, Visual Studio.</p>
+            <p><a href="https://github.com/Tejun432/tj432/tree/main/InfinityWar">View on GitHub</a></p>
+
+            <p><strong>3. RU Kindergarten</strong></p>
+            <p>Description: Managing classroom distribution using hash tables and priority queues for efficient child sorting. Technologies used: Java, Visual Studio.</p>
+            <p><a href="https://github.com/Tejun432/tj432/tree/main/RUKindergarten">View on GitHub</a></p>
+            
+            <p><strong>4. RU Warehouse</strong></p>
+            <p>Description: Efficient product management using hash tables and priority queues for warehouse operations. Technologies used: Java, Visual Studio.</p>
+            <p><a href="https://github.com/Tejun432/tj432/tree/main/RUWarehouse/RUWarehouse">View on GitHub</a></p>
+            
+            <p><strong>5. GameOfLife</strong></p>
+            <p>Description: Simulating cellular automata through Java to model life evolution on a grid. Technologies used: Java, Visual Studio.</p>
+            <p><a href="https://github.com/Tejun432/tj432/tree/main/GameOfLife">View on GitHub</a></p>
+            
+            <p><strong>6. Huffman</strong></p>
+            <p>Description: Efficient data compression and decompression using Huffman Coding and binary file handling. Technologies used: Java, Visual Studio.</p>
+            <p><a href="https://github.com/Tejun432/tj432/tree/main/Huffman">View on GitHub</a></p>
+        </section>
+
+        <section class="section skills">
+    <h2>Skills</h2>
     <ul>
-      <li><a href="#project1">1. Air Quality Monitoring System</a></li>
-      <li><a href="#project2">2. Infinity War</a></li>
-      <li><a href="#project3">3. RU Kindergarten</a></li>
-      <li><a href="#project4">4. RU Warehouse</a></li>
-      <li><a href="#project5">5. GameOfLife</a></li>
-      <li><a href="#project6">6. Huffman</a></li>
-      <li><a href="#more_projects">7. More projects</a></li>
+        <li><strong>HTML</strong>: Used for building web pages, ensuring, they are readily accessible and well-structured.</li>
+        <li><strong>CSS</strong>: Designed and improved the design of webpages/sites, making sure they were responsive and easy to use.</li>
+        <li><strong>JavaScript</strong>: Used in multiple projects to provide dynamic content and increase user engagement.</li>
+        <li><strong>Python</strong>: Utilized for data analysis and machine learning projects, creating efficient algorithms for predictive models.</li>
+        <li><strong>GitHub</strong>: Used GitHub to manage version control and collaborate on projects, including creating a webpage and tracking changes.</li>
     </ul>
-  </section>
+</section>
 
-  <section id="project1">
-    <h2>1. Air Quality Monitoring System</h2>
-    <p>The Air Quality Monitoring System is a comprehensive project designed to track, analyze, and forecast air quality parameters using advanced data processing techniques and machine learning models. It integrates several components, including data collection from sensors, data cleaning and validation, and machine learning-based prediction models such as ARIMA and LSTM. The system collects crucial air quality metrics like CO2, PM2.5, temperature, and humidity, providing real-time insights into air quality conditions. The data collection process interfaces with external APIs, such as OpenWeatherMap, to gather pollution data based on geographic location. Once the data is collected, it undergoes a series of cleaning and processing steps to ensure its quality and accuracy. The system then applies time series forecasting techniques (ARIMA) and neural network-based predictions (LSTM) to predict future air quality trends, enabling proactive monitoring. The project also includes a dashboard for seamless integration with a database, ensuring efficient storage and management of collected data. The Jupyter Notebook serves as an interactive guide to understand the various components and workflows of the system, providing users with an intuitive way to interact with the data and models. The entire project is designed for easy deployment, with clear installation instructions and a main application script that ties all functionalities together. This system offers a powerful solution for continuous air quality monitoring, providing valuable insights that can drive environmental and health-related decision-making.</p>
-    <a href="https://github.com/Tejun432/tj432/tree/main/AirQuality_Monitoring_System" target="_blank">Read more</a>
-  </section>
-
-
-  <section id="project2">
-    <h2>2. Infinity War: A Marvel-Inspired Graph Odyssey</h2>
-    <p>
-Welcome to Infinity War – a collection of Java programs designed to tackle some of the universe's most complex graph-based challenges, all set in a fictional, Marvel-inspired context. Imagine using your problem-solving skills not just to save the world, but to outsmart the likes of Thanos and harness the power of the Time Stone! This project lets you dive into thrilling tasks like calculating the flux intensity Thor endures while wielding Stormbreaker, simulating the chaos of Thanos' snap on a graph, and even determining the minimum energy needed to travel from Earth to Titan. Whether you're exploring timelines, testing the limits of connectivity after random destruction, or calculating expected utility (EU) thresholds, *Infinity War* combines graph theory, strategic thinking, and a dash of superhero flair. From Flux Calculators to the Time Stone's power to manipulate timelines, embark on an epic journey through graphs and algorithms – with the fate of the universe hanging in the balance. Ready to face the challenge and check the tools? </p>
-    <a href="https://github.com/Tejun432/tj432/tree/main/InfinityWar">Read more</a>
-  </section>
-  
-   <section id="project3">
-    <h2>3. RU Kindergarten</h2>
-    <p>Welcome to the Kindergarten Management System, a smart tool designed to optimize classroom assignments. Using a hash table and priority queue structure, children are assigned to 10 classrooms based on age, behavior, and preferences. Each classroom is organized with a priority queue (min-heap) to prioritize children, with the least prioritized child at the root. This system allows for easy addition, transfer, and eviction of children while maintaining balanced classroom capacities. Here’s a breakdown of its key features:</p>
-    <ul>
-      <li><strong>Hash Table Structure:</strong> Organizes the kindergarten into 10 classrooms, each serving as a bucket for child distribution based on age and preferences.</li>
-      <li><strong>Priority Queue:</strong> Each classroom uses a priority queue (min-heap) to manage children based on attributes like age and behavior, with the least prioritized child at the root.</li>
-      <li><strong>Child Operations:</strong> Supports adding, transferring, deleting, and managing child attendance while ensuring efficient classroom management.</li>
-      <li><strong>Eviction Logic:</strong> If a classroom exceeds its capacity, the least prioritized child is evicted to make space for new enrollments.</li>
-      <li><strong>Efficient Classroom Management:</strong> Prioritizes filling classrooms with vacancies, keeping classrooms at optimal capacity.</li>
-    </ul>
-    <p>This system is implemented through three core classes: Kindergarten.java, Classroom.java, and Child.java, offering an efficient solution for managing children’s needs in a kindergarten setting.
-</p>
-    <a href="https://github.com/Tejun432/tj432/tree/main/RUKindergarten" target="_blank">Read more</a>
-  </section>
-
-  
-    <section id="project4">
-    <h2>4. RU Warehouse Management System</h2>
-    <p>The RU Warehouse Management System simulates the operations of a product warehouse using a hash table structure with priority queues. Products are organized into 10 sectors, each functioning as a bucket in the hash table. A priority queue (min-heap) is used within each sector to efficiently manage products based on their popularity, ensuring smooth operations when adding, deleting, restocking, and simulating purchases.</p>
-    
-    <ul>
-      <li><strong>Hash Table Structure:</strong> Organizes products into 10 sectors based on their product IDs.</li>
-      <li><strong>Priority Queue:</strong> Manages product data in each sector, prioritizing based on product popularity.</li>
-      <li><strong>Product Operations:</strong> Add, restock, delete, and simulate purchases to manage product lifecycle.</li>
-      <li><strong>Eviction Logic:</strong> Evicts the least popular product if a sector exceeds its capacity (5 products).</li>
-      <li><strong>Efficient Product Management:</strong> Fills empty spaces in sectors first before adding products to full sectors.</li>
-    </ul>
-
-    <p>The system includes three key components: Warehouse.java (manages product operations), Sector.java (handles product priority queues), and Product.java (defines product attributes). It’s a comprehensive tool designed to simulate real-world warehouse management while optimizing product space and demand tracking.</p>
-    <p>It could be integrated with APIs like the Inventory Management API or Open Product Data API to fetch real-time product data, demand trends, and stock levels. This would allow the system to update product attributes and make dynamic decisions on restocking and purchases, offering a more realistic and efficient warehouse management simulation.</p>
+        
+    </div>
     
     
-    <a href="https://github.com/Tejun432/tj432/tree/main/RUWarehouse/RUWarehouse" target="_blank">Read more</a>
-  </section>
-
-  
-  <section id="project5">
-    <h2>5. GameOfLife</h2>
-    <p>The Conway's Game of Life project, developed using Java, offers an immersive simulation of cellular automata, allowing users to visualize how a grid of cells evolves over generations based on simple yet powerful rules. The grid's cells can either be alive or dead, and their states change depending on the number of neighboring cells that are alive. This dynamic simulation provides a fascinating way to explore the principles of evolution and system behavior. The game can be initialized with pre-set patterns or read from a file containing the initial state of the grid, making it highly customizable. While the current implementation does not rely on external datasets or APIs, the system could easily be enhanced by integrating a dataset or API to fetch dynamic patterns and real-world data. For instance, by integrating a cellular dataset or API related to biological or ecological systems, such as the *World Health Organization’s (WHO) Disease Outbreak API* for modeling disease spread, users could simulate the behavior of populations or the impact of environmental factors on cell dynamics. Additionally, the game could be expanded by incorporating data on real-world ecosystems or traffic patterns to simulate different scenarios based on live data feeds. Through these integrations, the Conway’s Game of Life simulation would move from a purely mathematical model to a more practical and data-driven application, enhancing its ability to model complex, real-world behaviors.</p>
-    <a href="https://github.com/Tejun432/tj432/tree/main/GameOfLife">Read more</a>
-  </section>
-  
-  <section id="project6">
-    <h2>6. Huffman</h2>
-    <p>The Huffman Coding project implements a highly efficient data compression algorithm that reduces the size of files by assigning variable-length binary codes to characters based on their frequencies. Frequently occurring characters are given shorter binary codes, while less frequent characters receive longer codes. This method of compression is widely used in applications such as file storage and data transmission, providing significant savings in space and bandwidth. The project features robust encoding and decoding functionalities, where the encoding process compresses a text file, and the decoding process accurately reconstructs the original file. By analyzing the frequency of characters in the input file, a Huffman Tree is constructed, where each character’s binary representation is determined by its position in the tree. The project is capable of handling both the creation of the compressed file and the restoration of the original file from the encoded binary format. This can also be enhanced by integrating an API or dataset, such as a text corpus dataset from an open source library like Project Gutenberg or Common Crawl, to automatically generate frequency data for encoding large volumes of text. Integrating such real-world datasets would allow the system to adapt and provide data compression for various types of files, improving efficiency and scalability in real-world applications.</p>
-    <a href="https://github.com/Tejun432/tj432/tree/main/Huffman">Read more</a>
-  </section>
-  
-  <section id="more_projects">
-    <h2>7. More Projects</h2>
-    <p>Here are some of my additional Java projects showcasing a wide range of programming skills. These projects include LeasingCost, a program for calculating vehicle costs, CO2 emissions, and fuel consumption; PolygonTransform, which allows for geometric transformations like scaling, translating, and rotating polygons; and RURottenTomatoes, a program that processes a grid to identify columns with the highest count of rotten tomatoes. I’ve also worked on Sierpinski, which uses recursion to draw fractals, and WeatherGenerator, a simulation that forecasts weather patterns based on transition probabilities. Each of these projects demonstrates problem-solving and algorithmic thinking across diverse domains.</p>
-    <a href="https://github.com/Tejun432/tj432/tree/main/More%20Projects">Read more</a>
-  </section>
+    <footer>
+        <p>&copy; 2025 Tejaswi Nalajala. All rights reserved.</p>
+    </footer>
 </body>
 </html>

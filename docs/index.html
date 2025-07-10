@@ -1,9 +1,8 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Portfolio Resume</title>
     <style>
         body {
@@ -13,6 +12,7 @@
             padding: 0;
             background: #B1D8B7;
             color: #2F4F4F;
+            text-align: justify;
         }
 
         header {
@@ -21,12 +21,11 @@
             padding: 1rem 0;
             text-align: center;
         }
-        
+
         header img.profile-pic {
-            width: 120px; 
-            height: 120px; 
-         
-            margin-bottom: 1rem; 
+            width: 120px;
+            height: 120px;
+            margin-bottom: 1rem;
         }
 
         header h1 {
@@ -40,9 +39,9 @@
         }
 
         header a {
-            color: white;  
+            color: white;
             text-decoration: none;
-            margin: 0 10px; 
+            margin: 0 10px;
         }
 
         header a:hover {
@@ -74,15 +73,14 @@
         }
 
         .skills ul li {
-            margin: 0.5rem 0; 
+            margin: 0.5rem 0;
             font-size: 1rem;
         }
-        
+
         .section.projects {
-            margin-bottom: 50px; 
+            margin-bottom: 50px;
         }
 
-       
         footer {
             text-align: center;
             padding: 1rem 0;
@@ -91,9 +89,29 @@
             position: relative;
             width: 100%;
             margin-top: 1rem;
-           
         }
 
+        /* New CSS for Certifications Section */
+        .certifications ul {
+            padding-left: 20px; 
+            list-style: disc;
+        }
+
+        .certifications ul li {
+            margin: 0.5rem 0;  
+            font-size: 1rem;
+            line-height: 1.6;
+        }
+
+        .certifications ul li a {
+            color: #007BFF;         
+            text-decoration: underline;  
+            margin-left: 0.25rem;
+        }
+
+        .certifications ul li a:hover {
+            text-decoration: underline;
+        }
     </style>
 </head>
 <body>
@@ -126,138 +144,104 @@
         <section class="section skills">
     <h2>Skills</h2>
     <ul>
-        <li><strong>HTML</strong>: Used for building web pages, ensuring, they are readily accessible and well-structured.</li>
-        <li><strong>CSS</strong>: Designed and improved the design of webpages/sites, making sure they were responsive and easy to use.</li>
-        <li><strong>Java</strong>: Used in multiple projects to provide dynamic content and increase user engagement.</li>
-        <li><strong>Python</strong>: Utilized for data analysis and machine learning projects, creating efficient algorithms for predictive models.</li>
-        <li><strong>GitHub</strong>: Used GitHub to manage version control and collaborate on projects, including creating a webpage and tracking changes.</li>
+        <li><strong>Programming Languages:</strong> Python, Java, C, C++</li>
+        <li><strong>Data Analysis & Visualization:</strong> Pandas, NumPy, Seaborn, Matplotlib, Tableau, Power BI</li>
+        <li><strong>Machine Learning:</strong> Scikit-learn, TensorFlow, Keras, Time Series Forecasting (ARIMA, LSTM)</li>
+        <li><strong>Algorithms & Data Structures:</strong> Graph Algorithms, Priority Queues, Hash Tables, Trees</li>
+        <li><strong>Software Development:</strong> Object-Oriented Programming, Debugging (GDB, Valgrind), Multithreading (Pthreads)</li>
+        <li><strong>Dev Tools & Version Control:</strong> Git, GitHub, GNU Make, Makefile</li>
+        <li><strong>Operating Systems & Environments:</strong> Linux (Ubuntu), Shell Scripting, Linux System Programming</li>
+        <li><strong>Databases & APIs:</strong> SQL basics, REST APIs </li>
+        <li><strong>Web Technologies:</strong> HTML, CSS, Basic JavaScript</li>
     </ul>
 </section>
 
 
-        <section class="section projects">
+      
+     <section class="section projects">
+            <h2>AI & Machine Learning Hands-on Projects</h2>
+            <p><strong>1.FoodHub</strong></p>
+            <p>Performed exploratory data analysis (EDA) on the FoodHub dataset to uncover demand trends across restaurants and cuisines. Applied data cleaning, univariate and bivariate analysis using Pandas, NumPy, and Seaborn. Visualized key insights with histograms, boxplots, scatterplots, and heatmaps. Identified customer behavior and revenue patterns to deliver actionable recommendations that improved customer experience and operational efficiency.</p>
+            <p><a href="AI & Machine Learning- Hands-on Projects/1. FoodHub">View on GitHub</a></p>
+
+          <P> <strong>More projects coming soon:)</strong>  </P>  
+            
+        </section>
+         
+         <section class="section projects">
             <h2>College Projects</h2>
             <p><strong>1. Air Quality Monitoring System</strong></p>
-            <p>Description: The Air Quality Monitoring System is a comprehensive project designed to track, analyze, and forecast air quality parameters using advanced data processing techniques and machine learning models. It integrates several components, including data collection from sensors, data cleaning and validation, and machine learning-based prediction models such as ARIMA and LSTM. The system collects crucial air quality metrics like CO2, PM2.5, temperature, and humidity, providing real-time insights into air quality conditions. The data collection process interfaces with external APIs, such as OpenWeatherMap, to gather pollution data based on geographic location. Once the data is collected, it undergoes a series of cleaning and processing steps to ensure its quality and accuracy. The system then applies time series forecasting techniques (ARIMA) and neural network-based predictions (LSTM) to predict future air quality trends, enabling proactive monitoring. The project also includes a dashboard for seamless integration with a database, ensuring efficient storage and management of collected data. The Jupyter Notebook serves as an interactive guide to understand the various components and workflows of the system, providing users with an intuitive way to interact with the data and models. The entire project is designed for easy deployment, with clear installation instructions and a main application script that ties all functionalities together. This system offers a powerful solution for continuous air quality monitoring, providing valuable insights that can drive environmental and health-related decision-making. Technologies used: Python.</p>
+            <p>Developed an end-to-end system to collect, clean, and forecast air quality metrics (CO₂, PM2.5, temperature, humidity) using sensor data and external APIs (OpenWeatherMap). Implemented time series forecasting models (ARIMA, LSTM) for predictive analysis. Built an interactive dashboard and database integration for real-time monitoring and data management.
+Tools: Python, Jupyter Notebook, ARIMA, LSTM, APIs</p>
             <p><a href="https://github.com/Tejun432/tj432/tree/main/AirQuality_Monitoring_System">View on GitHub</a></p>
 
             <p><strong>2. Infinity War</strong></p>
-            <p>Description: Welcome to Infinity War – a collection of Java programs designed to tackle some of the universe's most complex graph-based challenges, all set in a fictional, Marvel-inspired context. Imagine using your problem-solving skills not just to save the world, but to outsmart the likes of Thanos and harness the power of the Time Stone! This project lets you dive into thrilling tasks like calculating the flux intensity Thor endures while wielding Stormbreaker, simulating the chaos of Thanos' snap on a graph, and even determining the minimum energy needed to travel from Earth to Titan. Whether you're exploring timelines, testing the limits of connectivity after random destruction, or calculating expected utility (EU) thresholds, *Infinity War* combines graph theory, strategic thinking, and a dash of superhero flair. From Flux Calculators to the Time Stone's power to manipulate timelines, embark on an epic journey through graphs and algorithms – with the fate of the universe hanging in the balance. Ready to face the challenge and check the tools? Technologies used: Java, Visual Studio.</p>
+            <p>Built a suite of Java programs to solve graph-based problems in a Marvel-themed context, including shortest path calculations, connectivity analysis, and expected utility thresholds. Simulated events like “Thanos’ snap” and timeline alterations using algorithmic graph theory.
+Tools: Java, Visual Studio</p>
             <p><a href="https://github.com/Tejun432/tj432/tree/main/InfinityWar">View on GitHub</a></p>
 
             <p><strong>3. RU Kindergarten</strong></p>
-           <p>Description: Welcome to the Kindergarten Management System, a smart tool designed to optimize classroom assignments. Using a hash table and priority queue structure, children are assigned to 10 classrooms based on age, behavior, and preferences. Each classroom is organized with a priority queue (min-heap) to prioritize children, with the least prioritized child at the root. This system allows for easy addition, transfer, and eviction of children while maintaining balanced classroom capacities. Here’s a breakdown of its key features:</p>
-    <ul>
-      <li><strong>Hash Table Structure:</strong> Organizes the kindergarten into 10 classrooms, each serving as a bucket for child distribution based on age and preferences.</li>
-      <li><strong>Priority Queue:</strong> Each classroom uses a priority queue (min-heap) to manage children based on attributes like age and behavior, with the least prioritized child at the root.</li>
-      <li><strong>Child Operations:</strong> Supports adding, transferring, deleting, and managing child attendance while ensuring efficient classroom management.</li>
-      <li><strong>Eviction Logic:</strong> If a classroom exceeds its capacity, the least prioritized child is evicted to make space for new enrollments.</li>
-      <li><strong>Efficient Classroom Management:</strong> Prioritizes filling classrooms with vacancies, keeping classrooms at optimal capacity.</li>
-    </ul>
-    <p>This system is implemented through three core classes: Kindergarten.java, Classroom.java, and Child.java, offering an efficient solution for managing children’s needs in a kindergarten setting. Technologies used: Java, Visual Studio.
+           <p>Developed a classroom management tool using hash tables and priority queues to allocate children to classrooms based on age, behavior, and preferences. Implemented eviction and transfer logic using min-heaps to maintain balanced capacities across 10 classrooms.
+Tools: Java, Visual Studio
 </p>
             <p><a href="https://github.com/Tejun432/tj432/tree/main/RUKindergarten">View on GitHub</a></p>
             
             <p><strong>4. RU Warehouse</strong></p>
-            <p>Description: The RU Warehouse Management System simulates the operations of a product warehouse using a hash table structure with priority queues. Products are organized into 10 sectors, each functioning as a bucket in the hash table. A priority queue (min-heap) is used within each sector to efficiently manage products based on their popularity, ensuring smooth operations when adding, deleting, restocking, and simulating purchases.</p>
-    
-    <ul>
-      <li><strong>Hash Table Structure:</strong> Organizes products into 10 sectors based on their product IDs.</li>
-      <li><strong>Priority Queue:</strong> Manages product data in each sector, prioritizing based on product popularity.</li>
-      <li><strong>Product Operations:</strong> Add, restock, delete, and simulate purchases to manage product lifecycle.</li>
-      <li><strong>Eviction Logic:</strong> Evicts the least popular product if a sector exceeds its capacity (5 products).</li>
-      <li><strong>Efficient Product Management:</strong> Fills empty spaces in sectors first before adding products to full sectors.</li>
-    </ul>
-
-    <p>The system includes three key components: Warehouse.java (manages product operations), Sector.java (handles product priority queues), and Product.java (defines product attributes). It’s a comprehensive tool designed to simulate real-world warehouse management while optimizing product space and demand tracking.</p>
-    <p>It could be integrated with APIs like the Inventory Management API or Open Product Data API to fetch real-time product data, demand trends, and stock levels. This would allow the system to update product attributes and make dynamic decisions on restocking and purchases, offering a more realistic and efficient warehouse management simulation. Technologies used: Java, Visual Studio.</p>
+            <p>Built a warehouse simulation system using a hash table with priority queues (min-heaps) to manage products across 10 sectors based on popularity. Implemented operations for adding, restocking, purchasing, and evicting products while maintaining optimal space utilization.
+Tools: Java, Visual Studio
             <p><a href="https://github.com/Tejun432/tj432/tree/main/RUWarehouse/RUWarehouse">View on GitHub</a></p>
             
             <p><strong>5. GameOfLife</strong></p>
-            <p>Description: The Conway's Game of Life project, developed using Java, offers an immersive simulation of cellular automata, allowing users to visualize how a grid of cells evolves over generations based on simple yet powerful rules. The grid's cells can either be alive or dead, and their states change depending on the number of neighboring cells that are alive. This dynamic simulation provides a fascinating way to explore the principles of evolution and system behavior. The game can be initialized with pre-set patterns or read from a file containing the initial state of the grid, making it highly customizable. While the current implementation does not rely on external datasets or APIs, the system could easily be enhanced by integrating a dataset or API to fetch dynamic patterns and real-world data. For instance, by integrating a cellular dataset or API related to biological or ecological systems, such as the *World Health Organization’s (WHO) Disease Outbreak API* for modeling disease spread, users could simulate the behavior of populations or the impact of environmental factors on cell dynamics. Additionally, the game could be expanded by incorporating data on real-world ecosystems or traffic patterns to simulate different scenarios based on live data feeds. Through these integrations, the Conway’s Game of Life simulation would move from a purely mathematical model to a more practical and data-driven application, enhancing its ability to model complex, real-world behaviors. Technologies used: Java, Visual Studio.</p>
+            <p>Developed a customizable cellular automaton in Java to simulate grid-based cell evolution using classic Game of Life rules. Supported file-based initialization with options for predefined patterns. Designed for extensibility with potential real-world applications like modeling disease spread or environmental dynamics.
+Tools: Java, Visual Studio
+
+</p>
             <p><a href="https://github.com/Tejun432/tj432/tree/main/GameOfLife">View on GitHub</a></p>
             
             <p><strong>6. Huffman</strong></p>
-            <p>Description: The Huffman Coding project implements a highly efficient data compression algorithm that reduces the size of files by assigning variable-length binary codes to characters based on their frequencies. Frequently occurring characters are given shorter binary codes, while less frequent characters receive longer codes. This method of compression is widely used in applications such as file storage and data transmission, providing significant savings in space and bandwidth. The project features robust encoding and decoding functionalities, where the encoding process compresses a text file, and the decoding process accurately reconstructs the original file. By analyzing the frequency of characters in the input file, a Huffman Tree is constructed, where each character’s binary representation is determined by its position in the tree. The project is capable of handling both the creation of the compressed file and the restoration of the original file from the encoded binary format. This can also be enhanced by integrating an API or dataset, such as a text corpus dataset from an open source library like Project Gutenberg or Common Crawl, to automatically generate frequency data for encoding large volumes of text. Integrating such real-world datasets would allow the system to adapt and provide data compression for various types of files, improving efficiency and scalability in real-world applications. Technologies used: Java, Visual Studio.</p>
+            <p>Implemented Huffman coding algorithm to compress and decompress text files using frequency-based binary encoding. Built a Huffman Tree for assigning optimal binary codes to characters, enabling efficient file storage and transmission. Included robust encoding/decoding functions with potential for integration with large-scale text datasets.
+Tools: Java, Visual Studio</p>
             <p><a href="https://github.com/Tejun432/tj432/tree/main/Huffman">View on GitHub</a></p>
             
             <p><a href="https://github.com/Tejun432/tj432/tree/main/More%20Projects" target="_blank"><strong>More Projects on GitHub</strong></a></p>
             
             
         </section>
-    
-     <section class="section projects">
-            <h2>AI & Machine Learning Hands-on Projects</h2>
-            <p><strong>1.FoodHub</strong></p>
-            <p>Description: Performed an exploratory data analysis (EDA) on the FoodHub dataset to help a food aggregator company understand demand trends across different restaurants and cuisines. Applied data cleaning techniques such as handling missing values and converting data types to ensure accuracy. Conducted univariate and bivariate analysis using Python libraries including Pandas, NumPy, and Seaborn, and visualized key patterns with histograms, boxplots, scatterplots, and heatmaps. Identified customer behavior trends, calculated revenue patterns, and analyzed performance across cuisine types and days of the week. Developed actionable business recommendations to enhance customer experience and operational efficiency, strengthening my skills in data analysis, visualization, and real-world problem solving.</p>
-            <p><a href="AI & Machine Learning- Hands-on Projects/1. FoodHub">View on GitHub</a></p>
+     
+   
 
-            
-            
-        </section>
-         
-        
-    <section class="section certifications">
+ <section class="section certifications">
     <h2>Certifications</h2>
-    <ul>
-        <li><strong>Python Foundations</strong> </li>
-       
-    <p>Description: This course provided a practical foundations to data analysis using Python, with a strong focus on exploratory data analysis (EDA). Key topics included univariate and bivariate analysis, data preprocessing, and data visualization using libraries such as Pandas, NumPy, and Seaborn. Hands-on projects involved analyzing real-world datasets to uncover insights and support business decision-making.</p>
-    <p><a href="https://github.com/Tejun432/tj432/blob/main/Certifications/Python%20Foundations.pdf" target="_blank">View Certification</a></p>
-
-    </ul>
-    <ul>
-        <li><strong>Supervised Machine Learning: Regression and Classification</strong> </li>
-       
-    <p>Description: This course teaches key machine learning techniques for predictive modeling using Python and Jupyter Notebook. It focuses on implementing regression for continuous data and classification for categorical data, with hands-on practice and model evaluation.</p>
-    <p><a href="https://github.com/Tejun432/tj432/blob/main/Certifications/Supervised%20Machine%20Learning%20Regression%20and%20Classification.pdf" target="_blank">View Certification</a></p>
-
-    </ul>
-    
-    <ul>
-        <li><strong>The Complete C Programming Bootcamp</strong> </li>
-       
-    <p>Description: This course provided comprehensive training in C programming, covering core concepts such as data types, control flow, functions, pointers, memory management, and file handling. Through hands-on projects and coding exercises, it strengthened practical programming skills and problem-solving abilities.</p>
-    <p><a href="https://github.com/Tejun432/tj432/blob/main/Certifications/The%20Complete%20C%20Programming%20Bootcamp.pdf" target="_blank">View Certification</a></p>
-
-    </ul>
-    
-    <ul>
-        <li><strong>Linux System Programming Techniques & Concepts</strong> </li>
-       
-    <p>Description: This course focused on Linux internals and system-level programming using C language. Gained hands-on experience with GCC (GNU Compiler Collection), GDB (GNU Debugger), strace, valgrind, and terminal-based development in a Linux environment (Ubuntu). Covered topics like memory layout, system calls, process/thread management, and inter-process communication.</p>
-    <p><a href="https://github.com/Tejun432/tj432/blob/main/Certifications/Linux%20System%20Programming%20Techniques%20%26%20Concepts.pdf" target="_blank">View Certification</a></p>
-
-    </ul>
-    
-    
-    <ul>
-        <li><strong>Learn Linux User Space Debugging</strong> </li>
-       
-    <p>Description: This course focused on debugging applications in the Linux user space environment. It covered tools and techniques such as gdb, strace, lsof, valgrind, and core dumps to analyze and troubleshoot program behavior, memory issues, and runtime errors effectively.</p>
-    <p><a href="https://github.com/Tejun432/tj432/blob/main/Certifications/Learn%20Linux%20User%20Space%20Debugging.pdf" target="_blank">View Certification</a></p>
-
-    </ul>
-    
-    
-
-    
-    <ul>
-        <li><strong>GNU Make and Makefile To Build C,C++ Projects(Linux,Mac)[2025]</strong> </li>
-       
-    <p>Description: This course covered writing and optimizing Makefiles to automate building C/C++ projects. Gained practical skills using GNU Make on Linux/Mac, including compilation rules, dependency management, phony targets, variables, and modular project structuring.</p>
-    <p><a href="https://github.com/Tejun432/tj432/blob/main/Certifications/GNU%20Make%20and%20Makefile%20To%20Build%20C%2CC%2B%2B%20Projects(Linux%2CMac)%5B2025%5D.pdf" target="_blank">View Certification</a></p>
-
-    </ul>
-    
-    <ul>
-        <li><strong>Multithreading and Thread Synchronization - Pthreads</strong> </li>
-       
-    <p>Description: Learned to create and manage threads using POSIX threads (Pthreads) in C. Gained hands-on experience with mutexes, condition variables, race condition prevention, and thread-safe programming for performance-oriented applications in Linux.</p>
-    <p><a href="https://github.com/Tejun432/tj432/blob/main/Certifications/Multithreading%20and%20Thread%20Synchronization%20-%20Pthreads.pdf" target="_blank">View Certification</a></p>
-
-    </ul>
-    
+  <ul>
+    <li>
+      <strong>Python Foundations</strong> – Data analysis using Pandas, NumPy, Seaborn; focused on EDA, univariate/bivariate analysis, and visualization. 
+      <a href="https://github.com/Tejun432/tj432/blob/main/Certifications/Python%20Foundations.pdf" target="_blank">View Certificate</a>
+    </li>
+    <li>
+      <strong>Supervised Machine Learning: Regression and Classification</strong> – Built predictive models using regression/classification in Python; practiced model evaluation in Jupyter Notebook. 
+      <a href="https://github.com/Tejun432/tj432/blob/main/Certifications/Supervised%20Machine%20Learning%20Regression%20and%20Classification.pdf" target="_blank">View Certificate</a>
+    </li>
+    <li>
+      <strong>The Complete C Programming Bootcamp</strong> – Covered core C programming (pointers, memory, file handling) with hands-on projects and problem-solving. 
+      <a href="https://github.com/Tejun432/tj432/blob/main/Certifications/The%20Complete%20C%20Programming%20Bootcamp.pdf" target="_blank">View Certificate</a>
+    </li>
+    <li>
+      <strong>Linux System Programming Techniques & Concepts</strong> – Practiced system-level C programming with GCC, GDB, strace, valgrind; focused on memory layout, IPC, and process/thread management. 
+      <a href="https://github.com/Tejun432/tj432/blob/main/Certifications/Linux%20System%20Programming%20Techniques%20%26%20Concepts.pdf" target="_blank">View Certificate</a>
+    </li>
+    <li>
+      <strong>Learn Linux User Space Debugging</strong> – Debugged Linux apps using gdb, lsof, strace, valgrind, and core dumps; identified runtime and memory issues. 
+      <a href="https://github.com/Tejun432/tj432/blob/main/Certifications/Learn%20Linux%20User%20Space%20Debugging.pdf" target="_blank">View Certificate</a>
+    </li>
+    <li>
+      <strong>GNU Make and Makefile for C/C++ Projects (Linux/Mac)</strong> – Automated project builds with Makefiles; covered compilation rules, phony targets, and modular Makefile structures. 
+      <a href="https://github.com/Tejun432/tj432/blob/main/Certifications/GNU%20Make%20and%20Makefile%20To%20Build%20C%2CC%2B%2B%20Projects(Linux%2CMac)%5B2025%5D.pdf" target="_blank">View Certificate</a>
+    </li>
+    <li>
+      <strong>Multithreading and Thread Synchronization – Pthreads</strong> – Developed thread-safe C programs using POSIX threads; worked with mutexes, condition variables, and concurrency handling. 
+      <a href="https://github.com/Tejun432/tj432/blob/main/Certifications/Multithreading%20and%20Thread%20Synchronization%20-%20Pthreads.pdf" target="_blank">View Certificate</a>
+    </li>
+  </ul>
 </section>
 
         
